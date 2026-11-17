@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: #0F1110;
+  color: #ECE9E2;
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+.font-cond {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-stretch: condensed;
+}
+.font-mono {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* Faint topographic line texture */
+.topo {
+  background-image:
+    repeating-linear-gradient(115deg, transparent 0 38px, rgba(236,233,226,0.018) 38px 39px),
+    repeating-linear-gradient(65deg, transparent 0 54px, rgba(236,233,226,0.014) 54px 55px);
+}
+
+/* Desaturated, high-contrast photo treatment */
+.photo {
+  filter: grayscale(0.35) contrast(1.08) brightness(0.82);
+}
+
+/* Scroll fade-up */
+.fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.fade-up.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .fade-up { opacity: 1; transform: none; transition: none; }
+}
+
+/* Thin custom scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #0F1110; }
+::-webkit-scrollbar-thumb { background: #2A2D2B; border: 2px solid #0F1110; }
+::-webkit-scrollbar-thumb:hover { background: #3A3D3B; }
+
+::selection { background: #D97706; color: #0F1110; }
